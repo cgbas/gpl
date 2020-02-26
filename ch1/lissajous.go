@@ -13,14 +13,17 @@ import (
 	"time"
 )
 
-var palette = []color.Color{color.White, color.Black}
+var palette = []color.Color{color.Black, color.RGBA{0x00, 0x80, 0x00, 0xff}, color.RGBA{0x00, 0x00, 0xff, 0xff}, color.White}
 
 const (
 	whiteIndex = 0 // primeira cor da paleta
 	blackIndex = 1 // próxima cor da paleta
+	blueIndex  = 2
+	greenIndex = 3
 )
 
 func main() {
+
 	rand.Seed(time.Now().UTC().UnixNano())
 	lissajous(os.Stdout)
 }
@@ -43,7 +46,9 @@ func lissajous(out io.Writer) {
 		for t := 0.0; t < cycles*2*math.Pi; t += res {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
-			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), blackIndex)
+			// taken from https://github.com/takatoshiono/gopl-book-exercise
+			index := i % len(palette)
+			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), uint8(index))
 		}
 		phase += 0.1
 		anim.Delay = append(anim.Delay, delay)
