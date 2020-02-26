@@ -28,21 +28,17 @@ func main() {
 		}
 	}
 	for line, filenames := range counts {
-		fileCount := len(filenames)
-		if fileCount == 1 {
-			total := 0
-			for _, count := range filenames {
-				total += count
-			}
-			if total <= 1 {
-				continue
-			}
+		if len(filenames) <= 1 {
+			continue
 		}
 
-		fmt.Printf("Encontrado em %d arquivo(s) o item \t%s\n", fileCount, line)
+		fmt.Printf("Encontrado em %d arquivo(s) o item [%s]\n", len(filenames), line)
+		total := 0
 		for name, count := range filenames {
 			fmt.Printf("\t%d ocorrencia(s) em %s\n", count, name)
+			total += count
 		}
+		fmt.Printf("Total de: %d ocorrencia(s)\n\n", total)
 	}
 }
 func countLines(f *os.File, counts map[string]map[string]int, filename string) {
