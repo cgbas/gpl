@@ -9,7 +9,6 @@ import (
 )
 
 func main() {
-
 	var s string
 	if len(os.Args) > 1 {
 		s = strings.Join(os.Args[1:], " ")
