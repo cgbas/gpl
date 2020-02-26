@@ -39,7 +39,7 @@ func main() {
 			}
 		}
 
-		fmt.Printf("Encontrado em %d arquivo(s) o item \t%s]\n", fileCount, line)
+		fmt.Printf("Encontrado em %d arquivo(s) o item \t%s\n", fileCount, line)
 		for name, count := range filenames {
 			fmt.Printf("\t%d ocorrencia(s) em %s\n", count, name)
 		}
