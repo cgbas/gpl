@@ -2,8 +2,8 @@
 package main
 
 import (
-	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -17,11 +17,19 @@ func main() {
 		}
 		resp, err := http.Get(url)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "fetch:  %v\n", err)
+			log.Fatal(os.Stderr, "fetch: %v\n", err)
 			os.Exit(1)
 		} else {
-			log.Println(resp.Status)
-			io.Copy(os.Stdout, resp.Body)
+
+			nbytes, err := io.Copy(ioutil.Discard, resp.Body)
+			if err != nil {
+				log.Fatal(os.Stderr, "fetch: %v\n", err)
+			}
+			b, err := ioutil.ReadAll(resp.Body)
+			if err != nil {
+				log.Fatal(os.Stderr, "fetch: %v\n", err)
+			}
+			log.Printf("Código HTTP %s: %d6 bytes foram transferidos", resp.Status, nbytes)
 			resp.Body.Close()
 		}
 	}
