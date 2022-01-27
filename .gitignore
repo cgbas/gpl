@@ -6,4 +6,4 @@ pkg/
 bin/
 .vscode/
 gpl.code-workspace
-*.DS_store*
+*.DS_Store*
