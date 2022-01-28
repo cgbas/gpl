@@ -1,3 +1,9 @@
-# Repo de estudos do livro A Linguagem de programação Go
+# Repo de estudos:
+## go-programming-udemy
+    Exercícios do curso de Go do Todd McLeod
+## go-book
+    Exercícios do livro:
+    A linguaguem de programação Go
+    (The Go Programming Language)
 
-Esse repo contém todos os exercícios do livro e também alguns programas experimentais.
+*Atenção*: contém também programas experimentais e serve como meu sandbox para Go.
