@@ -10,7 +10,12 @@ const (
 	e         = iota
 )
 const (
-	f = iota
+	_ = iota
+	// 2^10, 2^20, 2^30
+	// Using iotas for some bit shifting
+	kb = 1 << (iota * 10)
+	mb = 1 << (iota * 10)
+	gb = 1 << (iota * 10)
 )
 
 func main() {
@@ -30,6 +35,9 @@ func main() {
 	fmt.Println(u)
 	fmt.Println(s)
 
-	fmt.Printf("%T\t%T\t%T\t[%T - %d]\t[%T - %d]\t[%T - %d]\n", a, b, c, d, d, e, e, f, f)
+	fmt.Printf("%T\t%T\t%T\t[%T - %d]\t[%T - %d]\n", a, b, c, d, d, e, e)
 
+	fmt.Printf("%T\t(%b)\n", kb, kb)
+	fmt.Printf("%T\t(%b)\n", mb, mb)
+	fmt.Printf("%T\t(%b)\n", gb, gb)
 }
