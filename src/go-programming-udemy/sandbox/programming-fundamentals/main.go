@@ -40,4 +40,32 @@ func main() {
 	fmt.Printf("%T\t(%b)\n", kb, kb)
 	fmt.Printf("%T\t(%b)\n", mb, mb)
 	fmt.Printf("%T\t(%b)\n", gb, gb)
+
+	// Loops
+	//var i int = 142
+	for i := 97; i <= 122; i++ {
+		fmt.Printf("ASCII: [%d]%#U\tCHAR: %q\n", i, i, i)
+	}
+
+	var i int = 0
+	for i = 0; i <= 100; i++ {
+		if i%2 == 0 {
+			fmt.Printf("%d is even \n", i)
+		}
+
+	}
+
+	switch {
+	case false, true:
+		fmt.Println("lv 1")
+		fallthrough
+	case (3 == 4):
+		fmt.Println("lv 2")
+	case (4 == 5):
+		fmt.Println("lv 3")
+	case false:
+		fmt.Println("lv 4")
+	default:
+		fmt.Println("All the way to the bottom")
+	}
 }
