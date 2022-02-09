@@ -1,16 +1,23 @@
 /*
-
- */
+	Using the code from the previous example, add a record to your map. Now print the map out
+	using the “range” loop
+*/
 package main
 
 import "fmt"
 
 func main() {
-	favSport := "Skate"
-	switch favSport {
-	case "Skate":
-		fmt.Println("Do a kickflip!")
-	default:
-		fmt.Println("Esporte errado :)")
+	m := map[string][]string{
+		"bond_james":      []string{"Shaken, not stirred", "Martinis", "Women"},
+		"moneypenny_miss": []string{"James Bond", "Literature", "Computer Science"},
+		"no_dr":           []string{"Being evil", "Ice cream", "Sunsets"},
+	}
+
+	m["silva_christian"] = []string{"Skate", "Programming", "Coffe"}
+
+	for i, v := range m {
+		for ii, vv := range v {
+			fmt.Println(i, ii, vv)
+		}
 	}
 }
