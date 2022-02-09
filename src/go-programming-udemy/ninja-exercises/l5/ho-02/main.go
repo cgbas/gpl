@@ -13,7 +13,15 @@ type person struct {
 }
 
 func main() {
-	p1 := person{"John", "Crawl", []string{"Strawberry", "Vanilla", "Sambayón"}}
+	p1 := person{
+		first: "John",
+		last:  "Crawl",
+		fav: []string{
+			"Strawberry",
+			"Vanilla",
+			"Sambayón",
+		},
+	}
 	// more idiomatic
 	p2 := person{
 		first: "Duke",
@@ -25,17 +33,17 @@ func main() {
 		},
 	}
 
-	mp := make(map[string]person)
-
-	mp[p1.last] = p1
-	mp[p2.last] = p2
+	mp := map[string]person{
+		p1.last: p1,
+		p2.last: p2,
+	}
 
 	//fmt.Println(mp)
 	for _, v := range mp {
-		fmt.Println("person", v.last)
+		fmt.Println("- ", v.first, v.last)
 		for _, vi := range v.fav {
 			fmt.Printf("\t%v\n", vi)
 		}
-		
+
 	}
 }

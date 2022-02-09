@@ -55,5 +55,7 @@ func main() {
 
 	fmt.Println(t)
 	fmt.Println(s)
+	fmt.Println(t.doors)
+	fmt.Println(s.doors)
 
 }
