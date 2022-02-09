@@ -16,9 +16,9 @@ func main() {
 	z := [][]string{x1, x2}
 
 	for i, v := range z {
-		fmt.Println(i, v)
-		for i, v := range v {
-			fmt.Println("\t", i, v)
+		fmt.Println(i)
+		for ii, vv := range v {
+			fmt.Println("\t", ii, vv)
 		}
 
 	}

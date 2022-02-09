@@ -1,20 +1,59 @@
 /*
-Using the code from the previous example, use SLICING to create the following new slices
-which are then printed:
-	[42 43 44 45 46]
-	[47 48 49 50 51]
-	[44 45 46 47 48]
-	[43 44 45 46 47]
+Create a new type: vehicle.
+	- The underlying type is a struct.
+	- The fields:
+		- doors
+		- color
+	- Create two new types: truck & sedan.
+	- The underlying type of each of these new types is a struct.
+	- Embed the “vehicle” type in both truck & sedan.
+	- Give truck the field “fourWheel” which will be set to bool.
+	- Give sedan the field “luxury” which will be set to bool. solution
+	- Using the vehicle, truck, and sedan structs:
+	- using a composite literal, create a value of type truck and assign values to the
+fiel- ds;
+	- using a composite literal, create a value of type sedan and assign values to the
+fiel- ds.
+	- Print out each of these values.
+	- Print out a single field from each of these values.
 */
 package main
 
 import "fmt"
 
-func main() {
-	x := []int{42, 43, 44, 45, 46, 47, 48, 49, 50, 51}
+type vehicle struct {
+	doors int
+	color string
+}
 
-	fmt.Println(x[:5])
-	fmt.Println(x[5:])
-	fmt.Println(x[2:7])
-	fmt.Println(x[1:6])
+type sedan struct {
+	vehicle
+	luxury bool
+}
+
+type truck struct {
+	vehicle
+	fourWheel bool
+}
+
+func main() {
+	t := truck{
+		vehicle: vehicle{
+			doors: 2,
+			color: "black",
+		},
+		fourWheel: true,
+	}
+
+	s := sedan{
+		vehicle: vehicle{
+			doors: 5,
+			color: "silver",
+		},
+		luxury: true,
+	}
+
+	fmt.Println(t)
+	fmt.Println(s)
+
 }
