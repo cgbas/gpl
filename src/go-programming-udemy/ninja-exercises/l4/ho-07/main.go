@@ -11,14 +11,14 @@ import "fmt"
 
 func main() {
 
-	x := []string{"James", "Bond", "Shaken, not stirred"}
-	y := []string{"Miss", "Moneypenny", "Helloooooo, James."}
-	z := [][]string{x, y}
+	x1 := []string{"James", "Bond", "Shaken, not stirred"}
+	x2 := []string{"Miss", "Moneypenny", "Helloooooo, James."}
+	z := [][]string{x1, x2}
 
 	for i, v := range z {
 		fmt.Println(i, v)
 		for i, v := range v {
-			fmt.Println(i, v)
+			fmt.Println("\t", i, v)
 		}
 
 	}
