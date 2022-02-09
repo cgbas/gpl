@@ -8,13 +8,20 @@ package main
 import "fmt"
 
 func main() {
-	xf := f()
-	xfr := xf()
-	fmt.Println(xfr)
+	inc1 := incr()
+	inc2 := incr()
 
+	fmt.Println(inc1())
+	fmt.Println(inc1())
+	fmt.Println(inc1())
+
+	fmt.Println(inc2())
+	fmt.Println(inc2())
 }
-func f() func() string {
-	return func() string {
-		return "Rawr"
+func incr() func() int {
+	var x int
+	return func() int {
+		x++
+		return x
 	}
 }
