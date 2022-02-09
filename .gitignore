@@ -7,3 +7,4 @@ bin/
 .vscode/
 gpl.code-workspace
 *.DS_Store*
+*.pdf

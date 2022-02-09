@@ -28,4 +28,35 @@ func main() {
 	fmt.Println(z)
 	z = append(z, x...)
 	fmt.Println(z)
+
+	z = append(z[:2], z[4:]...)
+	fmt.Println(z)
+
+	// playing with make
+	a := make([]int, 10, 100)
+	a = append(a, 18)
+	fmt.Println(a)
+	fmt.Println(cap(a))
+	fmt.Println(len(a))
+
+	// multidimensional
+	ab := [][]int{z, a}
+	fmt.Println(ab)
+
+	// maps
+	m := map[string]int{
+		"James":           32,
+		"Miss Moneypenny": 27,
+	}
+	fmt.Println(m)
+	fmt.Println(m["James"])
+	fmt.Println(m["Chris"])
+
+	// comma ok idiom
+	if v, ok := m["James"]; ok {
+		fmt.Println("THIS IS THE IF PRINT", v)
+	}
+	delete(m, "James")
+	fmt.Println(m)
+
 }
