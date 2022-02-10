@@ -42,7 +42,7 @@ func main() {
 
 	wg.Add(2)
 
-	go p.quote(q...)
+	go p.quote(q)
 	go p.speak()
 
 	wg.Wait()
@@ -53,17 +53,17 @@ func (p person) speak() {
 	wg.Done()
 }
 
-func (p person) quote(quotes ...quote) {
+func (p person) quote(quotes []quote) {
 	rand.Seed(time.Now().UnixNano())
+	//q := quotes[rand.Intn(len(*quotes))]
+	quotes = append(quotes, quote{
+		author:  "J. R. R. Tolkien",
+		quote:   "Not all those who wander are lost.",
+		details: "I talks about Aragorn and it's lineage",
+	})
+
 	q := quotes[rand.Intn(len(quotes))]
-	/*
-		qx := &q
-		append(*qx, quote{
-			author:  "J. R. R. Tolkien",
-			quote:   "Not all those who wander are lost.",
-			details: "I talks about Aragorn and it's lineage",
-		})
-	*/
+
 	fmt.Printf("Author: %s\n\t\"%s\"\n", q.author, q.quote)
 	wg.Done()
 }
