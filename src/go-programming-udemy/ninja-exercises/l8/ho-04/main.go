@@ -1,3 +1,4 @@
+//  sort the []int and []string for each person.
 package main
 
 import (
