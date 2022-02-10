@@ -27,15 +27,16 @@ type person struct {
 	address    string
 }
 
-func changeMe(s *person, a string) {
-	s.address = a
+func changeMe(p *person, a string) {
+	(*p).address = a
+	fmt.Printf("changed to:%v\t%T\n", p.address, p)
 }
 
 func main() {
 	p := person{
-		last_first: "wolf_stephen",
-		address:    "Highway 1",
+		address: "Highway 1",
 	}
+	fmt.Println(p.address)
 	changeMe(&p, "Highway 2")
-	fmt.Println(p)
+	changeMe(&p, "Highway 3")
 }

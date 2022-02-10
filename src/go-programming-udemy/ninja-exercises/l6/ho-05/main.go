@@ -19,41 +19,35 @@ import (
 )
 
 type square struct {
-	l, w float64
+	length, width float64
 }
 type circle struct {
-	r float64
+	radius float64
 }
 type shape interface {
-	area()
+	area() float64
 }
 
 func info(s shape) {
-	switch s.(type) {
-	case circle:
-		s.(circle).area()
-	case square:
-		s.(square).area()
-	}
-
+	fmt.Printf("Area: %.4f\tType: %T\n", s.area(), s)
 }
 
-func (s circle) area() {
-	fmt.Println("Area is: ", math.Pi*(math.Pow(s.r, 2)))
+func (c *circle) area() float64 {
+	return math.Pi * math.Pow(c.radius, 2)
 }
 
-func (s square) area() {
-	fmt.Println("Area is: ", s.l*s.w)
+func (s square) area() float64 {
+	return s.length * s.width
 }
 
 func main() {
 	s := square{
-		l: 10,
-		w: 10,
+		length: 10,
+		width:  10,
 	}
-	c := circle{
-		r: 2,
-	}
-	info(s)
-	info(c)
+	defer info(s)
+
+	c := circle{2}
+	info(&c)
+
 }
