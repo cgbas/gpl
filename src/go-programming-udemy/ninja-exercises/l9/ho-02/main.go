@@ -28,7 +28,15 @@ type person struct {
 }
 
 type human interface {
-	speak() string
+	speak()
+}
+
+func (p *person) speak() {
+	fmt.Printf("Hello my name is %s\n", p.name)
+}
+
+func saySomething(h human) {
+	h.speak()
 }
 
 func main() {
@@ -39,12 +47,4 @@ func main() {
 	saySomething(&p)
 	// Doesn't work
 	//saySomething(p)
-}
-
-func (p *person) speak() string {
-	return fmt.Sprintf("Hello my name is %s", p.name)
-}
-
-func saySomething(h human) {
-	fmt.Println(h.speak())
 }
