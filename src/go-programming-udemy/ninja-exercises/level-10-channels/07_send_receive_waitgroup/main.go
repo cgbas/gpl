@@ -12,20 +12,31 @@ video: 170
 */
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
 
 func main() {
 	c := make(chan int)
 
-	for i := 0; i < 10; i++ {
-		go func(i int) {
-			for j := 0; j < 10; j++ {
-				c <- i*10 + j
-			}
-		}(i)
-	}
+	var wg sync.WaitGroup
 
-	for j := 0; j < 100; j++ {
-		fmt.Println(j, <-c)
+	go func() {
+		for i := 0; i < 10; i++ {
+			wg.Add(1)
+			go func(i int) {
+				for j := 0; j < 10; j++ {
+					c <- i*10 + j
+				}
+				wg.Done()
+			}(i)
+		}
+		wg.Wait()
+		close(c)
+	}()
+
+	for v := range c {
+		fmt.Println(v)
 	}
 }
