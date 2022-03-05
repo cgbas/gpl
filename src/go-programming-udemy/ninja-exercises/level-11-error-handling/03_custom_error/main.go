@@ -28,7 +28,7 @@ func main() {
 	foo(c)
 }
 func (c customErr) Error() string {
-	return fmt.Sprintf("here is the customError that occured: %v\n", c.info)
+	return fmt.Sprintf("here is the customError: %v\n", c.info)
 }
 
 func foo(err error) {
